@@ -22,4 +22,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Check out tweak project
         run: |
-          git clone https://{{$G_TOKEN}}@github.com/EvanDbg/NotiX.git
+          git clone https://${{ secrets.G_TOKEN }}@github.com/EvanDbg/NotiX.git
