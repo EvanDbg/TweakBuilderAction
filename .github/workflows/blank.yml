@@ -30,6 +30,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Macos env
+        if: steps.cache_macos.outputs.cache-hit != 'true'
         run: |
           brew install dpkg ldid gsed
 
