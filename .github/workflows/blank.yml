@@ -45,19 +45,19 @@ jobs:
           sudo cp ../XcodeDefaultOb/Prefix.pch $THEOS/Prefix.pch
           sudo cp ../XcodeDefaultOb/RemoteLog.h $THEOS/include
           cd ./NotiX
-          cp BuildScripts/Obfuscator/Makefile Makefile
-          cp BuildScripts/Obfuscator/Prefs/Makefile NotiXPrefs/Makefile
-          cp BuildScripts/Obfuscator/build.sh build.sh
-          bash ./build.sh
-          gsed -i '/#define DPKGPATH/ c #define DPKGPATH @\"/Library/dpkg/info/fun.yfyf.beta.notix.list\"' Tweak.xm
-          gsed -i '/Package/ c Package: fun.yfyf.beta.notix' layout/DEBIAN/control
-          bash ./buildWithoutClean.sh
-          gsed -i '/#define DPKGPATH/ c #define DPKGPATH @\"/Library/dpkg/info/fun.yfyf.bigboss.notix.list\"' Tweak.xm
-          gsed -i '/Package/ c Package: fun.yfyf.bigboss.notix' layout/DEBIAN/control
-          bash ./buildWithoutClean.sh
-          gsed -i '/#define DPKGPATH/ c #define DPKGPATH @\"/Library/dpkg/info/com.hk.notix.list\"' Tweak.xm
-          gsed -i '/Package/ c Package: com.hk.notix' layout/DEBIAN/control
-          bash ./buildWithoutClean.sh
+          sudo cp BuildScripts/Obfuscator/Makefile Makefile
+          sudo cp BuildScripts/Obfuscator/Prefs/Makefile NotiXPrefs/Makefile
+          sudo cp BuildScripts/Obfuscator/build.sh build.sh
+          sudo bash ./build.sh
+          sudo gsed -i '/#define DPKGPATH/ c #define DPKGPATH @\"/Library/dpkg/info/fun.yfyf.beta.notix.list\"' Tweak.xm
+          sudo gsed -i '/Package/ c Package: fun.yfyf.beta.notix' layout/DEBIAN/control
+          sudo bash ./buildWithoutClean.sh
+          sudo gsed -i '/#define DPKGPATH/ c #define DPKGPATH @\"/Library/dpkg/info/fun.yfyf.bigboss.notix.list\"' Tweak.xm
+          sudo gsed -i '/Package/ c Package: fun.yfyf.bigboss.notix' layout/DEBIAN/control
+          sudo bash ./buildWithoutClean.sh
+          sudo gsed -i '/#define DPKGPATH/ c #define DPKGPATH @\"/Library/dpkg/info/com.hk.notix.list\"' Tweak.xm
+          sudo gsed -i '/Package/ c Package: com.hk.notix' layout/DEBIAN/control
+          sudo bash ./buildWithoutClean.sh
           
       - name: Extract Release Tag
         shell: bash
