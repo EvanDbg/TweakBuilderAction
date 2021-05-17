@@ -30,12 +30,12 @@ jobs:
           brew install dpkg ldid gsed
           sudo git clone --recursive git://github.com/theos/theos.git $THEOS
           sudo rm -rf $THEOS/sdks/
-          sudo git clone https://github.com/EvanDbg/XcodeDefaultOb.git ../XcodeDefaultOb
-          cd ../XcodeDefaultOb
+          sudo git clone https://github.com/EvanDbg/XcodeDefaultOb.git ./XcodeDefaultOb
+          cd ./XcodeDefaultOb
           pwd
           ls -la
-          sudo cat XcodeDefaultOb.xctoolchain.zip.aa XcodeDefaultOb.xctoolchain.zip.ab XcodeDefaultOb.xctoolchain.zip.ac XcodeDefaultOb.xctoolchain.zip.ad XcodeDefaultOb.xctoolchain.zip.ae XcodeDefaultOb.xctoolchain.zip.af XcodeDefaultOb.xctoolchain.zip.ag XcodeDefaultOb.xctoolchain.zip.ah XcodeDefaultOb.xctoolchain.zip.ai XcodeDefaultOb.xctoolchain.zip.aj > ../TweakBuilderAction/NotiX/XcodeDefaultOb.xctoolchain.zip
-          cd ../TweakBuilderAction/NotiX
+          sudo cat XcodeDefaultOb.xctoolchain.zip.aa XcodeDefaultOb.xctoolchain.zip.ab XcodeDefaultOb.xctoolchain.zip.ac XcodeDefaultOb.xctoolchain.zip.ad XcodeDefaultOb.xctoolchain.zip.ae XcodeDefaultOb.xctoolchain.zip.af XcodeDefaultOb.xctoolchain.zip.ag XcodeDefaultOb.xctoolchain.zip.ah XcodeDefaultOb.xctoolchain.zip.ai XcodeDefaultOb.xctoolchain.zip.aj > ../NotiX/XcodeDefaultOb.xctoolchain.zip
+          cd ../NotiX
           pwd
           sudo unzip -n XcodeDefaultOb.xctoolchain.zip -d .
           sudo mkdir $THEOS/toolchain/XcodeDefault1.xctoolchain
