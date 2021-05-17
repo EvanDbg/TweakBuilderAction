@@ -22,4 +22,53 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Check out tweak project
         run: |
-          git clone https://${{ secrets.G_TOKEN }}@github.com/EvanDbg/NotiX.git
+          ${{ secrets.G_CLONE_URL }} .
+          export THEOS=/opt/theos
+          sudo mkdir -p $THEOS
+          brew install dpkg ldid gsed
+          sudo git clone --recursive git://github.com/theos/theos.git $THEOS
+          sudo rm -rf $THEOS/sdks/
+          sudo git clone https://github.com/EvanDbg/XcodeDefaultOb.git ../XcodeDefaultOb
+          cd ../XcodeDefaultOb
+          pwd
+          ls -la
+          sudo cat XcodeDefaultOb.xctoolchain.zip.aa XcodeDefaultOb.xctoolchain.zip.ab XcodeDefaultOb.xctoolchain.zip.ac XcodeDefaultOb.xctoolchain.zip.ad XcodeDefaultOb.xctoolchain.zip.ae XcodeDefaultOb.xctoolchain.zip.af XcodeDefaultOb.xctoolchain.zip.ag XcodeDefaultOb.xctoolchain.zip.ah XcodeDefaultOb.xctoolchain.zip.ai XcodeDefaultOb.xctoolchain.zip.aj > ../NotiX/XcodeDefaultOb.xctoolchain.zip
+          cd ../TweakBuilderAction
+          pwd
+          sudo unzip -n XcodeDefaultOb.xctoolchain.zip -d .
+          sudo mkdir $THEOS/toolchain/XcodeDefault1.xctoolchain
+          sudo cp -r XcodeDefaultOb.xctoolchain/* $THEOS/toolchain/XcodeDefault1.xctoolchain/
+          sudo mkdir -p $THEOS/sdks/iPhoneOS14.4.sdk
+          sudo cp -r ../XcodeDefaultOb/iPhoneOS14.4.sdk/* $THEOS/sdks/iPhoneOS14.4.sdk/
+          sudo cp ../XcodeDefaultOb/Prefix.pch $THEOS/Prefix.pch
+          sudo cp ../XcodeDefaultOb/RemoteLog.h $THEOS/include
+          cp BuildScripts/Obfuscator/Makefile Makefile
+          cp BuildScripts/Obfuscator/Prefs/Makefile NotiXPrefs/Makefile
+          cp BuildScripts/Obfuscator/build.sh build.sh
+          bash ./build.sh
+          gsed -i '/#define DPKGPATH/ c #define DPKGPATH @\"/Library/dpkg/info/fun.yfyf.beta.notix.list\"' Tweak.xm
+          gsed -i '/Package/ c Package: fun.yfyf.beta.notix' layout/DEBIAN/control
+          bash ./buildWithoutClean.sh
+          gsed -i '/#define DPKGPATH/ c #define DPKGPATH @\"/Library/dpkg/info/fun.yfyf.bigboss.notix.list\"' Tweak.xm
+          gsed -i '/Package/ c Package: fun.yfyf.bigboss.notix' layout/DEBIAN/control
+          bash ./buildWithoutClean.sh
+          gsed -i '/#define DPKGPATH/ c #define DPKGPATH @\"/Library/dpkg/info/com.hk.notix.list\"' Tweak.xm
+          gsed -i '/Package/ c Package: com.hk.notix' layout/DEBIAN/control
+          bash ./buildWithoutClean.sh
+          
+      - name: Extract Release Tag
+        shell: bash
+        run: echo "##[set-output name=version;]$(grep Version layout/DEBIAN/control | sed 's/Version:[[:space:]]//g')"
+        id: extract_version
+
+      - name: Automatic Releases
+        # You may pin to the exact commit or the version.
+        # uses: marvinpinto/action-automatic-releases@526ce12c6675bbe6e0e9a4169c90d09a3f7ad3e2
+        uses: marvinpinto/action-automatic-releases@v1.2.0
+        with:
+          # GitHub secret token
+          repo_token: ${{ secrets.G_TOKEN }}
+          automatic_release_tag: NotiX-${{ steps.extract_version.outputs.version }}
+          prerelease: false
+          # Assets to upload to the release
+          files: ./packages/*.deb
