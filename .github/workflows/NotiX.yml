@@ -49,7 +49,7 @@ jobs:
         # Runs a set of commands using the runners shell
       - name: Make Clean Package
         run: |
-          sudo ${{ secrets.G_CLONE_URL }} ./NotiX
+          sudo ${{ secrets.G_CLONE_URL_NOTIX }} ./NotiX
           cd ./NotiX
           sudo cp BuildScripts/Obfuscator/Makefile Makefile
           sudo cp BuildScripts/Obfuscator/Prefs/Makefile NotiXPrefs/Makefile
@@ -84,3 +84,6 @@ jobs:
           prerelease: false
           # Assets to upload to the release
           files: ./NotiX/packages/*.deb
+          
+      - name: Successful Notify
+        run: curl https://api.day.app/oscvrdJCinKuuuf2dSUXhL/"Github Action"/"NotiX Build Successful"
