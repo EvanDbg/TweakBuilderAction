@@ -4,6 +4,8 @@ name: TweakBuild
 
 # Controls when the action will run. 
 on:
+  push:
+    branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -22,7 +24,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Check out tweak project
         run: |
-          ${{ secrets.G_CLONE_URL }} .
+          sudo ${{ secrets.G_CLONE_URL }} ./NotiX
           export THEOS=/opt/theos
           sudo mkdir -p $THEOS
           brew install dpkg ldid gsed
@@ -32,8 +34,8 @@ jobs:
           cd ../XcodeDefaultOb
           pwd
           ls -la
-          sudo cat XcodeDefaultOb.xctoolchain.zip.aa XcodeDefaultOb.xctoolchain.zip.ab XcodeDefaultOb.xctoolchain.zip.ac XcodeDefaultOb.xctoolchain.zip.ad XcodeDefaultOb.xctoolchain.zip.ae XcodeDefaultOb.xctoolchain.zip.af XcodeDefaultOb.xctoolchain.zip.ag XcodeDefaultOb.xctoolchain.zip.ah XcodeDefaultOb.xctoolchain.zip.ai XcodeDefaultOb.xctoolchain.zip.aj > ../NotiX/XcodeDefaultOb.xctoolchain.zip
-          cd ../TweakBuilderAction
+          sudo cat XcodeDefaultOb.xctoolchain.zip.aa XcodeDefaultOb.xctoolchain.zip.ab XcodeDefaultOb.xctoolchain.zip.ac XcodeDefaultOb.xctoolchain.zip.ad XcodeDefaultOb.xctoolchain.zip.ae XcodeDefaultOb.xctoolchain.zip.af XcodeDefaultOb.xctoolchain.zip.ag XcodeDefaultOb.xctoolchain.zip.ah XcodeDefaultOb.xctoolchain.zip.ai XcodeDefaultOb.xctoolchain.zip.aj > ../TweakBuilderAction/NotiX/XcodeDefaultOb.xctoolchain.zip
+          cd ../TweakBuilderAction/NotiX
           pwd
           sudo unzip -n XcodeDefaultOb.xctoolchain.zip -d .
           sudo mkdir $THEOS/toolchain/XcodeDefault1.xctoolchain
