@@ -61,7 +61,7 @@ jobs:
           
       - name: Extract Release Tag
         shell: bash
-        run: echo "##[set-output name=version;]$(grep Version layout/DEBIAN/control | sed 's/Version:[[:space:]]//g')"
+        run: echo "##[set-output name=version;]$(grep Version ./NotiX/layout/DEBIAN/control | sed 's/Version:[[:space:]]//g')"
         id: extract_version
 
       - name: Automatic Releases
@@ -71,7 +71,7 @@ jobs:
         with:
           # GitHub secret token
           repo_token: ${{ secrets.G_TOKEN }}
-          automatic_release_tag: NotiX-${{ steps.extract_version.outputs.version }}
+          automatic_release_tag: notix_${{ steps.extract_version.outputs.version }}
           prerelease: false
           # Assets to upload to the release
-          files: ./packages/*.deb
+          files: ./NotiX/packages/*.deb
