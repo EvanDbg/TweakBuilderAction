@@ -45,6 +45,7 @@ jobs:
         # Runs a set of commands using the runners shell
       - name: Make Clean Package
         run: |
+          export THEOS=/opt/theos
           sudo ${{ secrets.G_CLONE_URL_BIGBANGEV }} ./BigBangEv
           cd ./BigBangEv
           sudo cp zMakefile/Makefile Makefile
