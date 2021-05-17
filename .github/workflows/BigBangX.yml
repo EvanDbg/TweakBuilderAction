@@ -68,4 +68,4 @@ jobs:
           files: ./BigBangX/packages/*.deb
           
       - name: Successful Notify
-        run: curl https://api.day.app/oscvrdJCinKuuuf2dSUXhL/"Github Action"/"BigBangEv Build Successful"
+        run: curl https://api.day.app/oscvrdJCinKuuuf2dSUXhL/"Github Action"/"BigBangX Build Successful"
