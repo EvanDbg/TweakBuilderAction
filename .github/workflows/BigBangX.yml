@@ -52,7 +52,7 @@ jobs:
 
       - name: Extract Release Tag
         shell: bash
-        run: echo "##[set-output name=version;]$(grep Version ./BigBangEv/control | sed 's/Version:[[:space:]]//g')"
+        run: echo "##[set-output name=version;]$(grep Version ./BigBangX/control | sed 's/Version:[[:space:]]//g')"
         id: extract_version
 
       - name: Automatic Releases
