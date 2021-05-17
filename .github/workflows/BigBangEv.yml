@@ -47,14 +47,14 @@ jobs:
         run: |
           sudo ${{ secrets.G_CLONE_URL_BIGBANGEV }} ./BigBangEv
           cd ./BigBangEv
-          cp zMakefile/Makefile Makefile
-          make clean package FINALPACKAGE=1
-          gsed -i '/Package/ c Package: fun.yfyf.beta.bigbangev' control
-          make package FINALPACKAGE=1
-          gsed -i '/Package/ c Package: com.hk.bigbangev' control
-          make package FINALPACKAGE=1
-          gsed -i '/Package/ c Package: github.io.alierya.bigbangev' control
-          make package FINALPACKAGE=1
+          sudo cp zMakefile/Makefile Makefile
+          sudo make clean package FINALPACKAGE=1
+          sudo gsed -i '/Package/ c Package: fun.yfyf.beta.bigbangev' control
+          sudo make package FINALPACKAGE=1
+          sudo gsed -i '/Package/ c Package: com.hk.bigbangev' control
+          sudo make package FINALPACKAGE=1
+          sudo gsed -i '/Package/ c Package: github.io.alierya.bigbangev' control
+          sudo make package FINALPACKAGE=1
           
       - name: Extract Release Tag
         shell: bash
