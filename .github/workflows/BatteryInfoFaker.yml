@@ -44,7 +44,7 @@ jobs:
           sudo chmod 777 Makefile
           sudo gsed -i '1i\export SYSROOT=$(THEOS)/sdks/iPhoneOS14.4.sdk' Makefile
           sudo gsed -i '1i\export THEOS=/opt/theos' Makefile
-          make clean package FINALPACKAGE=1 DEBUG=0
+          sudo make clean package FINALPACKAGE=1 DEBUG=0
 
       - name: Extract Release Tag
         shell: bash
