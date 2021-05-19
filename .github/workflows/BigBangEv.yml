@@ -54,6 +54,8 @@ jobs:
           sudo gsed -i '/Package/ c Package: com.hk.bigbangev' control
           sudo bash ./buildWithoutClean.sh
           sudo gsed -i '/Package/ c Package: github.io.alierya.bigbangev' control
+          echo "Depiction: https://alierya.github.io/depictions/github.io.alierya.bigbangev" >> control
+          echo "Icon: file:///Library/PreferenceBundles/BigBangEvPrefs.bundle/icon@2x.png" >> control
           sudo bash ./buildWithoutClean.sh
 
       - name: Extract Release Tag
