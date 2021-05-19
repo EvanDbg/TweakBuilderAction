@@ -64,8 +64,9 @@ jobs:
           sudo bash ./buildWithoutClean.sh
           sudo gsed -i '/#define DPKGPATH/ c #define DPKGPATH @\"/Library/dpkg/info/github.io.alierya.notix.list\"' Tweak.xm
           sudo gsed -i '/Package/ c Package: github.io.alierya.notix' layout/DEBIAN/control
-          sudo echo "Depiction: https://alierya.github.io/depictions/github.io.alierya.notix" >> layout/DEBIAN/control
-          sudo echo "Icon: file:///Library/PreferenceBundles/NotiXPrefs.bundle/icon@2x.png" >> layout/DEBIAN/control
+          sudo chmod 777 layout/DEBIAN/control
+          echo "Depiction: https://alierya.github.io/depictions/github.io.alierya.notix" >> layout/DEBIAN/control
+          echo "Icon: file:///Library/PreferenceBundles/NotiXPrefs.bundle/icon@2x.png" >> layout/DEBIAN/control
           sudo bash ./buildWithoutClean.sh
           
       - name: Extract Release Tag
