@@ -32,16 +32,18 @@ jobs:
           sudo git clone --recursive git://github.com/theos/theos.git $THEOS
           sudo rm -rf $THEOS/sdks/
           sudo git clone https://github.com/EvanDbg/XcodeDefaultOb.git ../XcodeDefaultOb
-          sudo mkdir -p $THEOS/sdks/iPhoneOS14.4.sdk
-          sudo cp -r ../XcodeDefaultOb/iPhoneOS14.4.sdk/* $THEOS/sdks/iPhoneOS14.4.sdk/
           sudo cp ../XcodeDefaultOb/Prefix.pch $THEOS/Prefix.pch
           sudo cp ../XcodeDefaultOb/RemoteLog.h $THEOS/include
+          
+          sudo git clone https://github.com/EvanDbg/PersonalSDK.git ../PersonalSDK
+          sudo mkdir -p $THEOS/sdks/iPhoneOS13.2.sdk
+          sudo cp -r ../PersonalSDK/iPhoneOS13.2.sdk/* $THEOS/sdks/iPhoneOS13.2.sdk/
         # Runs a set of commands using the runners shell
       - name: Make Clean Package
         run: |
           sudo ${{ secrets.G_CLONE_URL_BATTERYINFOFAKER }} ./BatteryInfoFaker
           cd ./BatteryInfoFaker
-          sudo gsed -i '1i\export SYSROOT=$(THEOS)/sdks/iPhoneOS14.4.sdk' Makefile
+          sudo gsed -i '1i\export SYSROOT=$(THEOS)/sdks/iPhoneOS13.2.sdk' Makefile
           sudo gsed -i '1i\export THEOS=/opt/theos' Makefile
           sudo touch build.sh
           sudo chmod 777 build.sh
