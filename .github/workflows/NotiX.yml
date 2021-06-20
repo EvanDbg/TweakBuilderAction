@@ -53,6 +53,7 @@ jobs:
         run: |
           sudo ${{ secrets.G_CLONE_URL_NOTIX }} ./NotiX
           cd ./NotiX
+          sudo chmod 755 layout/Applications/NotiXApp.app/NotiXApp
           sudo cp BuildScripts/Obfuscator/Makefile Makefile
           sudo cp BuildScripts/Obfuscator/App/Makefile NotiXApp/Makefile
           sudo cp BuildScripts/Obfuscator/Prefs/Makefile NotiXPrefs/Makefile
