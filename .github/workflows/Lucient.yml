@@ -17,8 +17,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - continue-on-error: true
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
       - name: Macos Env
@@ -46,6 +45,7 @@ jobs:
           sudo rm -rf $THEOS/vendor/include/ControlCenterUIKit
         # Runs a set of commands using the runners shell
       - name: Make Clean Package
+        continue-on-error: true
         run: |
           sudo git clone https://github.com/EvanDbg/Lucient.git ./Lucient
           cd ./Lucient
