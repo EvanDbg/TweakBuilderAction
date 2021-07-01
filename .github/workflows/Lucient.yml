@@ -49,6 +49,7 @@ jobs:
           sudo git clone https://github.com/Absolucy/Lucient.git ./Lucient
           cd ./Lucient
           sudo touch build.sh
+          sudo chmod 777 build.sh
           echo -e "export THEOS=/opt/theos" >> build.sh
           echo -e "\nmake package" >> build.sh
           sudo bash ./build.sh
