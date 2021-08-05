@@ -51,7 +51,7 @@ jobs:
         run: |
           sudo git clone https://github.com/KritantaDev/Avocado-SpotifyWidget.git ./Avocado-SpotifyWidget
           cd ./Avocado-SpotifyWidget
-          dragon
+          sudo dragon do
           
       - name: Extract Release Tag
         shell: bash
