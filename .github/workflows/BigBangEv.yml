@@ -36,11 +36,11 @@ jobs:
           sudo rm -rf $THEOS/sdks/
           sudo git clone https://github.com/EvanDbg/XcodeDefaultOb.git ../XcodeDefaultOb
           cd ../XcodeDefaultOb
-          sudo cat XcodeDefaultOb.xctoolchain.zip.aa XcodeDefaultOb.xctoolchain.zip.ab XcodeDefaultOb.xctoolchain.zip.ac XcodeDefaultOb.xctoolchain.zip.ad XcodeDefaultOb.xctoolchain.zip.ae XcodeDefaultOb.xctoolchain.zip.af XcodeDefaultOb.xctoolchain.zip.ag XcodeDefaultOb.xctoolchain.zip.ah XcodeDefaultOb.xctoolchain.zip.ai XcodeDefaultOb.xctoolchain.zip.aj > ../TweakBuilderAction/XcodeDefaultOb.xctoolchain.zip
+          sudo cat XcodeDefault.xctoolchain.zip.aa XcodeDefault.xctoolchain.zip.ab XcodeDefault.xctoolchain.zip.ac XcodeDefault.xctoolchain.zip.ad XcodeDefault.xctoolchain.zip.ae XcodeDefault.xctoolchain.zip.af XcodeDefault.xctoolchain.zip.ag XcodeDefault.xctoolchain.zip.ah XcodeDefault.xctoolchain.zip.ai XcodeDefault.xctoolchain.zip.aj > ../TweakBuilderAction/XcodeDefault.xctoolchain.zip
           cd ../TweakBuilderAction
-          sudo unzip -n XcodeDefaultOb.xctoolchain.zip -d .
+          sudo unzip -n XcodeDefault.xctoolchain.zip -d .
           sudo mkdir $THEOS/toolchain/XcodeDefault1.xctoolchain
-          sudo cp -r XcodeDefaultOb.xctoolchain/* $THEOS/toolchain/XcodeDefault1.xctoolchain/
+          sudo cp -r XcodeDefault.xctoolchain/* $THEOS/toolchain/XcodeDefault1.xctoolchain/
           sudo mkdir -p $THEOS/sdks/iPhoneOS14.4.sdk
           sudo cp -r ../XcodeDefaultOb/iPhoneOS14.4.sdk/* $THEOS/sdks/iPhoneOS14.4.sdk/
           sudo cp ../XcodeDefaultOb/Prefix.pch $THEOS/Prefix.pch
