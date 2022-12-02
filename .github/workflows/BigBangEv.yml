@@ -30,7 +30,9 @@ jobs:
           export THEOS=/opt/theos
           sudo mkdir -p $THEOS
           sudo git clone --recursive https://github.com/theos/theos.git $THEOS
+          cd $THEOS
           sudo git reset --hard 987b988cd706ed88bebb4f07f7aeea6976b5eb1c
+          cd ..
           sudo rm -rf $THEOS/sdks/
           sudo git clone https://github.com/EvanDbg/XcodeDefaultOb.git ../XcodeDefaultOb
           cd ../XcodeDefaultOb
