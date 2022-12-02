@@ -40,6 +40,7 @@ jobs:
           cd ../TweakBuilderAction
           sudo unzip -n XcodeDefaultOb.xctoolchain.zip -d .
           sudo mkdir $THEOS/toolchain/XcodeDefault1.xctoolchain
+          sudo mv XcodeDefault.xctoolchain XcodeDefaultOb.xctoolchain
           sudo cp -r XcodeDefaultOb.xctoolchain/* $THEOS/toolchain/XcodeDefault1.xctoolchain/
           sudo mkdir -p $THEOS/sdks/iPhoneOS14.4.sdk
           sudo cp -r ../XcodeDefaultOb/iPhoneOS14.4.sdk/* $THEOS/sdks/iPhoneOS14.4.sdk/
