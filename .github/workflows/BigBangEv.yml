@@ -31,7 +31,7 @@ jobs:
           sudo mkdir -p $THEOS
           sudo git clone --recursive https://github.com/theos/theos.git $THEOS
           pushd $THEOS
-          sudo git reset --hard 987b988cd706ed88bebb4f07f7aeea6976b5eb1c
+          sudo git reset --hard 4fff1aef9256926dc0f2235c8fd0cc19b30c221b
           popd
           sudo rm -rf $THEOS/sdks/
           sudo git clone https://github.com/EvanDbg/XcodeDefaultOb.git ../XcodeDefaultOb
