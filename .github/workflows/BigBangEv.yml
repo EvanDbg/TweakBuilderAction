@@ -30,6 +30,7 @@ jobs:
           export THEOS=/opt/theos
           sudo mkdir -p $THEOS
           sudo git clone --recursive https://github.com/theos/theos.git $THEOS
+          sudo git reset --hard 987b988cd706ed88bebb4f07f7aeea6976b5eb1c
           sudo rm -rf $THEOS/sdks/
           sudo git clone https://github.com/EvanDbg/XcodeDefaultOb.git ../XcodeDefaultOb
           cd ../XcodeDefaultOb
@@ -48,7 +49,7 @@ jobs:
         run: |
           sudo ${{ secrets.G_CLONE_URL_BIGBANGEV }} ./BigBangEv
           cd ./BigBangEv
-          sudo git checkout newTheos
+          sudo git checkout NoAnimeAndSpringcuts
           sudo cp zMakefile/Makefile Makefile
           sudo bash ./build.sh
           sudo gsed -i '/Package/ c Package: fun.yfyf.beta.bigbangev' control
