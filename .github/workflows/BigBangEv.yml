@@ -50,7 +50,7 @@ jobs:
         run: |
           sudo ${{ secrets.G_CLONE_URL_BIGBANGEV }} ./BigBangEv
           cd ./BigBangEv
-          sudo git checkout NoAnimeAndSpringcuts
+          sudo git checkout newTheos
           sudo bash ./build.sh
           sudo gsed -i '/Package/ c Package: fun.yfyf.beta.bigbangev' control
           sudo bash ./buildWithoutClean.sh
