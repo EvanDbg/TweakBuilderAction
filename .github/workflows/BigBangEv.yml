@@ -13,6 +13,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: macos-10.15
+    strategy:
+      matrix:
+        theos_ver: [4fff1aef9256926dc0f2235c8fd0cc19b30c221b]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -29,7 +32,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /opt/theos
-          key: ${{ runner.os }}-theos-4fff1aef9256926dc0f2235c8fd0cc19b30c221b
+          key: ${{ runner.os }}-theos-${{matrix.theos_ver}}
 
       # Runs a set of commands using the runners shell
       - name: Theos Env
@@ -60,15 +63,15 @@ jobs:
           cd ./BigBangEv
           sudo git checkout newTheos
           sudo bash ./build.sh
-          sudo gsed -i '/Package/ c Package: fun.yfyf.beta.bigbangev' control
-          sudo bash ./buildWithoutClean.sh
-          sudo gsed -i '/Package/ c Package: com.hk.bigbangev' control
-          sudo bash ./buildWithoutClean.sh
-          sudo gsed -i '/Package/ c Package: github.io.alierya.bigbangev' control
-          sudo chmod 777 control
-          echo -e "\nDepiction: https://alierya.github.io/depictions/github.io.alierya.bigbangev" >> control
-          echo -e "\nIcon: file:///Library/PreferenceBundles/BigBangEvPrefs.bundle/icon@2x.png" >> control
-          sudo bash ./buildWithoutClean.sh
+          # sudo gsed -i '/Package/ c Package: fun.yfyf.beta.bigbangev' control
+          # sudo bash ./buildWithoutClean.sh
+          # sudo gsed -i '/Package/ c Package: com.hk.bigbangev' control
+          # sudo bash ./buildWithoutClean.sh
+          # sudo gsed -i '/Package/ c Package: github.io.alierya.bigbangev' control
+          # sudo chmod 777 control
+          # echo -e "\nDepiction: https://alierya.github.io/depictions/github.io.alierya.bigbangev" >> control
+          # echo -e "\nIcon: file:///Library/PreferenceBundles/BigBangEvPrefs.bundle/icon@2x.png" >> control
+          # sudo bash ./buildWithoutClean.sh
 
       - name: Extract Release Tag
         shell: bash
@@ -88,4 +91,4 @@ jobs:
           files: ./BigBangEv/packages/*.deb
           
       - name: Successful Notify
-        run: curl https://api.day.app/oscvrdJCinKuuuf2dSUXhL/"Github Action"/"BigBangEv Build Successful"
+        run: curl `https://api.day.app/HKLMhPrm4JpDq9a8QFhK9C/"Github Action"/"BigBangEv Build Successful"`
