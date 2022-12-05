@@ -91,4 +91,4 @@ jobs:
           files: ./BigBangEv/packages/*.deb
           
       - name: Successful Notify
-        run: curl `https://api.day.app/HKLMhPrm4JpDq9a8QFhK9C/"Github Action"/"BigBangEv Build Successful"`
+        run: curl 'https://api.day.app/HKLMhPrm4JpDq9a8QFhK9C/"Github Action"/"BigBangEv Build Successful"'
