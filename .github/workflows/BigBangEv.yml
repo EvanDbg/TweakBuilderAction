@@ -39,8 +39,7 @@ jobs:
           sudo cat XcodeDefault.xctoolchain.zip.aa XcodeDefault.xctoolchain.zip.ab XcodeDefault.xctoolchain.zip.ac XcodeDefault.xctoolchain.zip.ad XcodeDefault.xctoolchain.zip.ae XcodeDefault.xctoolchain.zip.af XcodeDefault.xctoolchain.zip.ag XcodeDefault.xctoolchain.zip.ah XcodeDefault.xctoolchain.zip.ai XcodeDefault.xctoolchain.zip.aj > ../TweakBuilderAction/XcodeDefault.xctoolchain.zip
           cd ../TweakBuilderAction
           sudo unzip -n XcodeDefault.xctoolchain.zip -d .
-          sudo mkdir $THEOS/toolchain/XcodeDefault1.xctoolchain
-          sudo cp -r ./XcodeDefault.xctoolchain/* $THEOS/toolchain/XcodeDefault1.xctoolchain/
+          sudo mv ./XcodeDefault.xctoolchain $THEOS/toolchain/XcodeDefault1.xctoolchain
           sudo mkdir -p $THEOS/sdks/iPhoneOS14.4.sdk
           sudo cp -r ../XcodeDefaultOb/iPhoneOS14.4.sdk/* $THEOS/sdks/iPhoneOS14.4.sdk/
           sudo cp ../XcodeDefaultOb/Prefix.pch $THEOS/Prefix.pch
