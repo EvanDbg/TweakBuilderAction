@@ -30,6 +30,17 @@ jobs:
         run: |
           export THEOS=~/theos
           bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)"
+          sudo git clone https://github.com/EvanDbg/XcodeDefaultOb.git ../XcodeDefaultOb
+          cd ../XcodeDefaultOb
+          sudo cat XcodeDefault.xctoolchain.zip.aa XcodeDefault.xctoolchain.zip.ab XcodeDefault.xctoolchain.zip.ac XcodeDefault.xctoolchain.zip.ad XcodeDefault.xctoolchain.zip.ae XcodeDefault.xctoolchain.zip.af XcodeDefault.xctoolchain.zip.ag XcodeDefault.xctoolchain.zip.ah XcodeDefault.xctoolchain.zip.ai XcodeDefault.xctoolchain.zip.aj > ../TweakBuilderAction/XcodeDefault.xctoolchain.zip
+          cd ../TweakBuilderAction
+          sudo unzip -n XcodeDefault.xctoolchain.zip -d .
+          sudo mv ./XcodeDefault.xctoolchain $THEOS/toolchain/XcodeDefault1.xctoolchain
+          sudo mkdir -p $THEOS/sdks/iPhoneOS14.4.sdk
+          sudo cp -r ../XcodeDefaultOb/iPhoneOS14.4.sdk/* $THEOS/sdks/iPhoneOS14.4.sdk/
+          sudo cp ../XcodeDefaultOb/Prefix.pch $THEOS/Prefix.pch
+          sudo cp ../XcodeDefaultOb/RemoteLog.h $THEOS/include
+          sudo rm -rf $THEOS/vendor/include/ControlCenterUIKit
         # Runs a set of commands using the runners shell
       - name: Make Clean Package
         run: |
