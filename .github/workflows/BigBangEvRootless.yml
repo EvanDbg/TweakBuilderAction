@@ -41,6 +41,7 @@ jobs:
           sudo cp ../XcodeDefaultOb/Prefix.pch $THEOS/Prefix.pch
           sudo cp ../XcodeDefaultOb/RemoteLog.h $THEOS/include
           sudo rm -rf $THEOS/vendor/include/ControlCenterUIKit
+          echo -e "\n#import <rootless.h>" >> $THEOS/Prefix.pch
         # Runs a set of commands using the runners shell
       - name: Make Clean Package
         run: |
