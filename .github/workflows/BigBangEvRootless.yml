@@ -28,7 +28,7 @@ jobs:
       - name: Theos Env
         if: steps.cache_theos.outputs.cache-hit != 'true'
         run: |
-          export THEOS=/opt/theos
+          export THEOS=~/theos
           bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)"
         # Runs a set of commands using the runners shell
       - name: Make Clean Package
