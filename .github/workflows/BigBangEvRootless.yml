@@ -12,7 +12,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: macos-10.15
+    runs-on: macos-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -29,20 +29,7 @@ jobs:
         if: steps.cache_theos.outputs.cache-hit != 'true'
         run: |
           export THEOS=/opt/theos
-          sudo mkdir -p $THEOS
-          sudo git clone --recursive https://github.com/theos/theos.git $THEOS
-          pushd $THEOS
-          sudo rm -rf $THEOS/sdks/
-          sudo git clone https://github.com/EvanDbg/XcodeDefaultOb.git ../XcodeDefaultOb
-          cd ../XcodeDefaultOb
-          sudo cat XcodeDefault.xctoolchain.zip.aa XcodeDefault.xctoolchain.zip.ab XcodeDefault.xctoolchain.zip.ac XcodeDefault.xctoolchain.zip.ad XcodeDefault.xctoolchain.zip.ae XcodeDefault.xctoolchain.zip.af XcodeDefault.xctoolchain.zip.ag XcodeDefault.xctoolchain.zip.ah XcodeDefault.xctoolchain.zip.ai XcodeDefault.xctoolchain.zip.aj > ../TweakBuilderAction/XcodeDefault.xctoolchain.zip
-          cd ../TweakBuilderAction
-          sudo unzip -n XcodeDefault.xctoolchain.zip -d .
-          sudo mkdir -p $THEOS/sdks/iPhoneOS14.4.sdk
-          sudo cp -r ../XcodeDefaultOb/iPhoneOS14.4.sdk/* $THEOS/sdks/iPhoneOS14.4.sdk/
-          sudo cp ../XcodeDefaultOb/Prefix.pch $THEOS/Prefix.pch
-          sudo cp ../XcodeDefaultOb/RemoteLog.h $THEOS/include
-          sudo rm -rf $THEOS/vendor/include/ControlCenterUIKit
+          bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)"
         # Runs a set of commands using the runners shell
       - name: Make Clean Package
         run: |
