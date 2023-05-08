@@ -59,7 +59,7 @@ jobs:
           sudo ${{ secrets.G_CLONE_URL_BIGBANGEV }} ./BigBangEv
           cd ./BigBangEv
           sudo git checkout rootless
-          sudo bash ./build.sh
+          # sudo bash ./build.sh
         
       # Extract the version number from control file
       - name: Extract Release Tag
