@@ -62,20 +62,20 @@ jobs:
           # sudo bash ./build.sh
         
       # Extract the version number from control file
-      - name: Extract Release Tag
-        shell: bash
-        run: echo "##[set-output name=version;]$(grep Version ./BigBangEv/control | sed 's/Version:[[:space:]]//g')"
-        id: extract_version
+      # - name: Extract Release Tag
+      #   shell: bash
+      #   run: echo "##[set-output name=version;]$(grep Version ./BigBangEv/control | sed 's/Version:[[:space:]]//g')"
+      #   id: extract_version
 
       # Automatic release
-      - name: Automatic Releases
-        uses: marvinpinto/action-automatic-releases@v1.2.0
-        with:
-          repo_token: ${{ secrets.G_TOKEN }}
-          automatic_release_tag: bigbangev_${{ steps.extract_version.outputs.version }}
-          prerelease: false
-          files: ./BigBangEv/packages/*.deb
+      # - name: Automatic Releases
+      #   uses: marvinpinto/action-automatic-releases@v1.2.0
+      #   with:
+      #     repo_token: ${{ secrets.G_TOKEN }}
+      #     automatic_release_tag: bigbangev_${{ steps.extract_version.outputs.version }}
+      #     prerelease: false
+      #     files: ./BigBangEv/packages/*.deb
           
       # Notify if successful
-      - name: Successful Notify
-        run: curl https://api.day.app/HKLMhPrm4JpDq9a8QFhK9C/GithubAction/BigBangEvBuildSuccessful
+      # - name: Successful Notify
+      #   run: curl https://api.day.app/HKLMhPrm4JpDq9a8QFhK9C/GithubAction/BigBangEvBuildSuccessful
