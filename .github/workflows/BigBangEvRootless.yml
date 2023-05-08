@@ -13,9 +13,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: macos-10.15
-    strategy:
-      matrix:
-        theos_ver: [4fff1aef9256926dc0f2235c8fd0cc19b30c221b]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
