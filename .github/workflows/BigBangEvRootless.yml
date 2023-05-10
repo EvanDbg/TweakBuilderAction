@@ -79,9 +79,20 @@ jobs:
       # Notify if successful
       - name: Successful Notify
         run: curl -X "POST" "https://api.day.app/push" -H 'Content-Type:application/json;charset=utf-8' -d $'{
-            "title":"GitHub Action BigBangEv Rootless",
+            "title":"GitHub Action BigBangEv Rootless Successful",
             "body":"https://github.com/EvanDbg/TweakBuilderAction/releases/download/bigbangev_6.0.0/fun.yfyf.bigbangev_6.0.0_iphoneos-arm64.deb",
             "device_key":"HKLMhPrm4JpDq9a8QFhK9C",
+            "badge":1,
+            "sound":"minuet.caf",
+            "icon":"https://day.app/assets/images/avatar.jpg",
+            "group":"test"}'
+            
+      # Notify if successful
+      - name: Successful Notify User1
+        run: curl -X "POST" "https://api.day.app/push" -H 'Content-Type:application/json;charset=utf-8' -d $'{
+            "title":"GitHub Action BigBangEv Rootless Successful",
+            "body":"https://github.com/EvanDbg/TweakBuilderAction/releases/download/bigbangev_6.0.0/fun.yfyf.bigbangev_6.0.0_iphoneos-arm64.deb",
+            "device_key":"8hnnuT4ePpevQuj2HbFpU7",
             "badge":1,
             "sound":"minuet.caf",
             "icon":"https://day.app/assets/images/avatar.jpg",
